@@ -1,0 +1,21 @@
+Após baixar a ISO, abra o VirtualBox, cuja instalação foi mostrada passo a passo anteriormente, aperte em novo, para criarmos a máquina virtual:
+
+IMAGEM 1 
+
+Após apertar em novo, insira no campo VM name o nome ou apelido da sua máquina virtual, e abaixo no campo ISO Image, coloque o diretório em que a imagem ISO foi baixada e selecione, após isso clique na aba Specify virtual hard disk e defina a quantidade de memória de armazenamento que será utilizada, nessa pesquisa será 20 GB. clique em finalizar, não se preocupe com o restante das configurações e alocação de recursos nessa aba, isso será feito na aba de configurações.
+
+IMAGEM 2
+
+IMAGEM 3
+
+Agora é a parte de configuração da máquina, clique no ícone de Configurações e será aberta uma nova aba, que permite configurar a máquina virtual:
+
+IMAGEM 4
+
+Logo de início, na aba geral, podemos definir a quantidade de memoria ram que será alocada à máquina, isso depende do quanto de memória o computador hospedeiro contém, nesse caso será utilizado 4096 MB (4 GB RAM), porque é uma quantidade que irá suprir as necessidades dessa pesquisa.
+Nessa parte é importante ativar a opção UEFI  (Unified Extensible Firmware Interface), ele é o substituto do antigo BIOS (Basic Input/Output System), que é o responsável por carregar o Sistema Operacional, para ser mais específico, carrega o Bootloader, que enfim irá inicializar o Kernel do Sistema Operacional, dessa forma podemos trabalhar com tabelas de partições em GPT (GUID Partition Table), que é o padrão mais recente, sucessor do MBR (Master Boot Record).
+
+IMAGEM 5
+
+Após essas configurações, Aperte OK e a máquina pode ser inicializada clicando em iniciar, podemos dar continuidade à pesquisa e prosseguir com a instalação do Arch Linux.
+
