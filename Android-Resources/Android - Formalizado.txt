@@ -1,0 +1,52 @@
+Android - Formalizado
+
+Lançado em 2008, o Android se patronizou como um sistema operacional para dispositivos móveis, futuramente se tornando o mais utilizado globalmente.
+
+O sistema foi desenvolvido com foco em dispositivos móveis, a partir da ideia de criar um ambiente otimizado baseado no kernel Linux, adequado a aparelhos com recursos limitados. Para o processamento de gráficos, áudio e demais funcionalidades, o Android utiliza as linguagens C e C++, além de disponibilizar APIs que possibilitam o desenvolvimento de aplicações. A interface diferente do Linux tradicional e Windows, é projetada especificamente para telas de toque (touchscreen) ao invés do habitual mouse e teclado
+
+Em comparação com os outros sistemas, o Android tem integração com GPS, acelerômetro, giroscópio e sensores de proximidade, além do uso eficiente da bateria. O sistema possui suporte a redes móveis (3G, 4G e 5G), recurso inexistente no Linux desktop e no Windows padrão. O ambiente do Android é excelente para configurar dispositivos de outras empresas.
+
+Por ter um sistema open source, o Android permite mais liberdade de modificação por parte dos desenvolvedores, mas essa sistema também aumenta a vulnerabilidade do usuário a softwares maliciosos quando aplicativos são instalados fora do controle da OS, como por exemplo a Play Store.
+
+Instalação:
+
+A instalação do sistema foi realizada no Oracle VirtualBox, com instruções de um vídeo online. O processo ocorreu sem grandes dificuldades, sendo necessário alterar algumas configurações padrões para ter certeza do funcionamento da maquina.
+
+Passos realizados:
+
+1 - Instalar o Oracle VirtualBox no computador.
+
+2  - Obter o ISO do sistema desejado (disco óptico virtual) pela internet. No caso pelo seguinte link: https://www.android-x86.org/
+
+3 - Criar uma nova máquina virtual no VirtualBox, selecionando o tipo de sistema operacional Linux (Ubuntu).
+
+4 - Configurar os recursos da máquina virtual: quantidade de memória RAM, número de CPUs e memória de vídeo que será compartilhada a partir do seu computador.
+
+5 - Ajustar corretamente as configurações da BIOS da máquina virtual.
+
+
+
+fontes:
+
+Android Istaller
+https://sourceforge.net/projects/android-x86/
+
+Oracle VirtualBox
+https://www.virtualbox.org/
+
+Wikipedia
+https://en.wikipedia.org/wiki/Android_(operating_system)
+
+Android Site Oficial
+https://www.android.com/intl/pt_br/what-is-android/
+
+GeekForGeeks
+https://www.geeksforgeeks.org/operating-systems/difference-between-windows-and-android/
+
+Discuções do Reddit
+https://www.reddit.com/r/windows/comments/179lhz7/windows_to_android_differences/
+
+Emteria
+https://emteria.com/learn/android-vs-linux
+
+Brave Search IA
