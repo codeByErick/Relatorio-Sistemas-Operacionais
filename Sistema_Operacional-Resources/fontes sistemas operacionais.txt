@@ -1,0 +1,9 @@
+fontes sistemas operacionais
+
+Linux: https://docs.kernel.org/
+
+Windows: https://learn.microsoft.com/pt-br/windows/
+
+Mac OS: https://support.apple.com/pt-br/docs/mac
+
+Android: https://developer.android.com/develop?hl=pt-br
