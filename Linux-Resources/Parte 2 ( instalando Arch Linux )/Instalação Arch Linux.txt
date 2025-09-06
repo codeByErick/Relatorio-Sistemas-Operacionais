@@ -1,0 +1,93 @@
+Ao inicializar a máquina, a ISO é arregada, e abre um ambiente de instalação em modo live e temporário, que funciona como um Sistema Operacional mínimo que usamos apenas para instalar o Arch Linux no disco rígido.
+
+IMAGEM 1
+
+Para facilitar o processo, podemos configurar o mapa de teclas do teclado, para que utilize as teclas corretas conforme o padrão br-abnt2, isso depende do teclado utilizado. Para consultar os layouts disponíveis, utilize o comando "localectl list-keymaps". Após consultar os layoutus disponíveis, podemos usar o comando "loadkeys br-abnt2".
+
+IMAGEM 2
+
+Agora podemos começar o processo de particionamento de disco, usamos o comando "fdisk -l" para listar as tabelas de partições existentes, e o tamanho do disco. Na configuração incial da máquina virtual alocamos 20gb de espaço em disco, é importante prestar atenção no nome do dispositivo, que geralmente é representado por "/dev/sda".
+
+IMAGEM 3
+
+Para particionarmos o disco teremo que utilizar uma ferramenta de particionamento, usaremos o cfdisk que da suporte ao formato GPT, e além disso tem uma interface interativa. Utilize o comando "cfdisk /dev/sda" para inciar o particionamento no disco /dev/sda. Será aberto a interface da ferramenta. Escolha a opção GPT.
+
+IMAGEM 4
+
+Você pode navegar entre as opções da ferramenta utilizando as setas do teclado e dando enter, selecione a opção "new" para criar uma nova partição, a primeira partição será para o boot, que não necessita de muito espaço, pode colocar como 500M, após isso selecione a opção "type" e escolha o tipo "EFI System". Repita esse processo para criar a partição de SWAP e da raiz do Sistema, nessa pesquisa o tamanho da partição de SWAP será de 2gb, selecione o "type" para "Linux Swap", o restante do armazenamento pode ser alocado para a raiz do sistema, selecione o type para "Linux filesystem". Veja:
+
+IMAGEM 5
+
+Depois de organizar as partições, navegue até a opção "write" para gravar a tabela de partições. Utilize o comando "fdisk -l" para verificar se a tabela foi gravada corretamente:
+
+IMAGEM 6
+
+Agora é necessário dizer ao Sistema Operacional qual Sistema de arquivos iremos utilizar em cada partição, você precisará saber o identificador de cada partição para esse processo, isso pode ser feito pelo comando "fdisk -l", vendo o tipo e identificador de cada partição. Para a partição da raiz do sistema, que contém o tipo "Linux filesystem", será utilizado o sistema de arquivos ext4 (Fourth Extended Filesystem), então utilize o comando "mkfs.ext4 /dev/sda3", sendo o "/dev/sda3" o identificador da partição da raiz. Depois podemos formatar a partição de SWAP, usando o comando "mkswap /dev/sda2", sendo "/dev/sda2" a partição de SWAP. E enfim, para formatar a partição de boot, será utilizado o sistema de arquivos FAT32 (File Allocation Table 32), porque o firmware UEFI só consegue ler sistemas de arquivos FAT, devido sua compatibilidade entre diferentes sistemas. Utilize o comando "mkfs.fat -F 32 /dev/sda1", sendo "/dev/sda1" o identificador da partição de boot.
+
+IMAGEM 7
+
+É preciso fazer a montagem de diretórios para dizer ao sistema qual partição corresponde a cada pasta do Linux, siga os passos abaixo de acordo com o identificador de cada partição:
+
+Montando a partição raiz:
+mount /dev/sda3 /mnt
+
+Criando o diretório /boot:
+mkdir /mnt/boot
+
+Criando o diretório /boot/efi:
+mkdir /mnt/boot/efi
+
+Montando a partição /boot:
+mount /dev/sda1 /mnt/boot
+
+Montando a partição /boot/efi:
+mount --mkdir /dev/sda1 /mnt/boot/efi
+
+Depois ative a partição de SWAP com o comando "swapon /dev/sda2"
+
+Depois da montagem de diretórios podemos instalar os pacotes essenciais do Arch Linux usando o comando "pacstrap /mnt base nano dhcpcd linux linux-firmware ":
+
+IMAGEM 8
+
+Agora precisamos gerar a tabela fstab (file systems table), que é um arquivo de configuração no Linux que define quais sistemas de arquivos devem ser montados automaticamente e onde durante a inicialização do sistema. Utilizaremos a ferramenta "genfstab" que gera automaticamente as entradas do fstab com base nas partições montadas. Comando "genfstab -U /mnt >> /mnt/etc/fstab", -U usa UUIDs das partições, e ">>" redireciona a saída para o arquivo /mnt/etc/fstab. Podemos usar o comando "cat /mnt/etc/fstab" para ver se o arquivo foi gerado corretamente.
+
+IMAGEM 9
+
+Podemos usar o comando "arch-chroot /mnt" para entrar no ambiente do sistema.
+
+IMAGEM 10
+
+Vamos definir uma senha para o usuário root com "passwd":
+
+IMAGEM 11
+
+Use o comando "pacman -S dosfstools mtools network-manager-applet networkmanager wpa_supplicant wireless_tools", são alguns pacotes que serão úteis na pós instalação.
+
+Em seguida é necessario instalar um bootloader, que é o programa responsável por carregar o sistema operecional, vamos utilizar o GRUB. Siga os comandos:
+pacman -S grub efibootmgr
+
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
+
+Por fim, gere o arquivo de configurações do GRUB com o comando "grub-mkconfig -o /boot/grub/grub.cfg"
+
+IMAGEM 12
+
+Agora é só reiniciar o sistema, utilize exite para sair do "chroot" e depois utilize "reboot", o sistema será iniciado com o GRUB, irá pedir o ussuário e senha, como ainda não configuramos nenhum usuário entre com root e a senha configurada anteriormente.
+
+IMAGEM 13
+
+Utilize o comando "dhcpcd" da ferramenta que foi instalada anteriormente para configurar a rede, caso você esteja usando Wifi use o comando "iwctl", depois "device list" para ver o nome da sua interface de rede, depois " station nome_da_interface_de_rede scan" e " station nome_da_interface_de_rede get-networks" para escanear e listar redes disponíveis, por fim, use "station nome_da_interface_de_rede connect nome_rede" para se conectar, você será solicitado a digitar a senha. após isso utilize o comando "ip a" para verificar se o endereço ip foi atribuído ao sistema. Em seguida use o comando "ping -c 4 www.google.com" para verificar se os pacotes icmp estão sendo enviados ao google, caso isso esteja acontecendo a internet está funcionando corretamente.
+
+IMAGEM 14
+IMAGEM 15
+
+Com a internet funcionando, podemos então instalar uma interface gráfica, você pode usar alguma de sua preferência, nessa pesquisa será utilizado a interface GNOME, siga os passos abaixo:
+1 - pacman -S gnome gnome-terminal firefox
+2 - pacman -S gdm
+3 - systemctl enable gdm
+
+Após esses comandos a interface gráfica GNOME será instalada e inciada, só reiniciar a máquina com "reboot" e logar com usuário root e senha.
+
+IMAGEM 16
+IMAGEM 17
+IMAGEM 18
