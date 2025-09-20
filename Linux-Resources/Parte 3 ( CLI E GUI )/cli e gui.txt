@@ -34,3 +34,48 @@ Para criar diretórios use "mkdir nome_do_diretorio":
 
 IMAGEM 7
 
+Agora irei entrar nesse diretorio e criar um arquivo vazio usando o comando "touch":
+
+IMAGEM 8
+
+Este é um arquivo vazio, podemos inserir conteúdo usando um editor de texto, nesse exemplo será usado o nano, que foi instalado no processo de instalação do Arch Linux. Para editar o arquivo use o comando "nano nome_do_arquivo":
+
+IMAGEM 9
+
+Será aberta uma interface CLI  do nano, onde você pode escrever, e logo abaixo algumas opções, o caractere "^" representa a tecla "CTRL", então são atalhos para utilizar o nano, se você utilizar "CTRl + G" por exemplo, será aberta uma guia de ajuda do nano:
+
+IMAGEM 10
+
+IMAGEM 11
+
+
+Após escrever o conteúdo do arquivo, use "CTRL + X" para sair, será perguntado se você gostaria de salvar o arquivo, use "y" para sim e "n" para não, e então você poderá alterar o nome do arquivo se quiser:
+
+IMAGEM 12
+
+Para ver o conteúdo do arquivo que acabamos de criar use o comando "cat nome_do_arquivo":
+
+IMAGEM 13
+
+Podemos copiar esse arquivo para algum diretório de destino com o comando "cp nome_do_arquivo diretorio_destino", ex: "cp arquivo.txt /root/Desktop", ao navegarmos para /root/Desktop veremos que o arquivo copiado está lá:
+
+IMG 14
+
+Também podemos mover esse arquivo para algum diretório de destino usando "mv nome_do_arquivo diretório_destino", ex:
+
+IMG 15
+
+Para apagar um arquivo use "rm nome_do_arquivo":
+
+IMAGEM 16
+
+para apagar um diretorio vazio você pode usar o comando "rmdir", mas caso contenha algum arquivo será necessário usar "rm -r" que apaga o diretório e arquivos recursivamente, ou seja, apaga tudo que estiver dentro do diretório, até mesmo sub-diretórios, então essa opção deve ser usada com cuidado, para não apagar algo indesejado. Repare que se tentarmos apagar o diretório que criamos será retornada uma mensagem de erro, dizendo que o diretório não está vazio:
+
+IMAGEM 17
+
+Então será necessário usar "rm -r teste", não é retornada nenhuma mensagem, mas note que o diretório já não está mais lá:
+
+IMAGEM 18
+
+
+
