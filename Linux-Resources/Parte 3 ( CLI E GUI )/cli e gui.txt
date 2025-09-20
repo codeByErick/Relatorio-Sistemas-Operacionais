@@ -24,7 +24,7 @@ Podemos também entrar e sair de diretórios, use "cd nome_do_diretorio" para en
 
 IMAGEM 5
 
-Note que o após o comando pwd é possível ver que o diretório de trabalho foi alterado. Podemos retornar ao diretório anterior usando o comando "cd ..":
+Note que após o comando pwd é possível ver que o diretório de trabalho foi alterado. Podemos retornar ao diretório anterior usando o comando "cd ..":
 
 IMAGEM 6
 
@@ -34,7 +34,7 @@ Para criar diretórios use "mkdir nome_do_diretorio":
 
 IMAGEM 7
 
-Agora irei entrar nesse diretorio e criar um arquivo vazio usando o comando "touch":
+Agora irei entrar nesse diretório e criar um arquivo vazio usando o comando "touch":
 
 IMAGEM 8
 
@@ -77,5 +77,37 @@ Então será necessário usar "rm -r teste", não é retornada nenhuma mensagem,
 
 IMAGEM 18
 
+Agora veremos como esses processos são feitos através da Interface Gráfica. Abra a gaveta de Apps e procure por "Files":
 
+IMAGEM 19
 
+IMAGEM 20
+
+Este é o Nautilus, que é o gerenciador de arquivos padrão do ambiente de desktop GNOME. A princípio, podemos notar que diferentemente da linha de comando, não é necessário solicitar manualmente para listar os diretórios e arquivos, isso é feito automaticamente ao abrir um diretório. Podemos navegar entre diretórios clicando duas vezes com o mouse em cima do diretório desejado.
+Para criar um diretório clique com o botão direito do mouse em algum lugar vazio, aparecerá algumas opções, clique em "New Folder...", ao lado também é mostrado uma atalho para essa ação, em seguida digite o nome da pasta e clique em "create":
+
+IMAGEM 21
+
+IMAGEM 22
+
+IMAGEM 23
+
+Para criar um arquivo igual fizemos anteriormente, será necessário abrir um editor de texto, colocar o conteúdo e salvar o arquivo, procure por "Text Editor", o abra e escreva o conteúdo, depois clique no ícone de menu e selecione a opção "Save as", será aberto o gerenciador de arquivos, então entre no diretório "teste" que criamos e nomeie o arquivo e clique em save:
+
+IMG 24
+
+IMG 25
+
+Feche o editor de texto e volte ao gerenciador de arquivos, você notará que o arquivo criado está lá, para abri-lo basta clicar duas vezes em cima.
+
+Para copiá-lo clique com o botão direito e clique em "copy", depois navegue até o diretório de destino, clique com o botão direito em algum lugar vazio e clique em "paste":
+
+IMG 26
+
+IMG 27
+
+IMG 28
+
+Para apagar diretórios e arquivos basta clicar com o botão direito em cima e selecionar a opção "Move to trash" ou usar a tecla delete:
+
+IMG 29
