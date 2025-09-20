@@ -1,0 +1,36 @@
+Anteriormente, Realizamos a instalação do Arch Linux juntamente com o GNOME Desktop Environment, que é uma interface gráfica para o Linux, também conhecida como GUI (Graphical User Interface), também tivemos um primeiro contato com a linha de comando ou CLI (Command-Line Interface), onde realizamos a instalação do Arch Linux. Agora prosseguiremos falando um pouco mais detalhadamente sobre CLI e GUI, e o que podemos fazer com estes. Além disso, mostraremos exemplos práticos de como navegar entre diretórios e criar arquivos utilizando tanto o terminal quanto a interface gráfica, evidenciando como essas duas formas de interação se complementam dentro do sistema.
+
+Para começar, vá na gaveta de apps e procure por "terminal", você pode notar um outro programa semelhante chamado "Console", também é a linha de comando, mas o console é o acesso direto em modo texto, enquanto o terminal é um emulador gráfico que permite usar o shell dentro do ambiente de desktop. Usar o terminal nos oferece algumas vantagens como:
+
+- Permite abrir várias abas e janelas ao mesmo tempo.
+
+- Facilita copiar e colar comandos ou resultados com o mouse/atalhos.
+
+- Dá para ajustar cores, transparência, tamanho da fonte e até dividir a tela, etc.
+
+IMAGEM 1
+
+IMAGEM 2
+
+A seguir, há uma lista de comandos que nos possibilitam navegar entre diretórios e arquivos, exibi-los, criar arquivos e diretórios, etc:
+
+IMAGEM 3
+
+Podemos utilizar o comando "pwd" para mostrar o diretório de trabalho atual e em seguida "ls" para listar os arquivos e diretórios, para uma listagem mais detalhada podemos usar "ls -la" onde o parâmetro "l" mostra o modo, número de links, proprietário, grupo, tamanho em bytes e tempo de última modificação para cada arquivo e o "a" mostra arquivos ocultos:
+
+IMAGEM 4
+
+Podemos também entrar e sair de diretórios, use "cd nome_do_diretorio" para entrar nele, por exemplo "cd Desktop":
+
+IMAGEM 5
+
+Note que o após o comando pwd é possível ver que o diretório de trabalho foi alterado. Podemos retornar ao diretório anterior usando o comando "cd ..":
+
+IMAGEM 6
+
+Após esses comandos o terminal fica um pouco poluído, caso você queira, pode usar o comando "clear" que limpa os comandos do terminal, como se fosse um terminal novo.
+
+Para criar diretórios use "mkdir nome_do_diretorio":
+
+IMAGEM 7
+
